@@ -17,10 +17,10 @@ const midtrans = new midtransClient.Snap({
 
 // Endpoint untuk membuat transaksi
 app.post('/create-transaction', async (req, res) => {
-  const { amount, order_id, itemname } = req.body; // Ambil data amount dan order_id dari body request
+  const { amount, itemname } = req.body; // Ambil data amount dan order_id dari body request
 
   const transactionDetails = {
-    order_id: order_id, // ID transaksi yang unik
+    order_id: `order-${Date.now()}-${Math.floor(Math.random() * 10000)}`, // ID transaksi yang unik
     gross_amount: amount, // Jumlah yang akan dibayar
     item_name: itemname,
   };
